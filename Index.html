@@ -1,0 +1,349 @@
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎<title>DEEN DATA</title>
+‎
+‎<style>
+‎*{
+‎  margin:0;
+‎  padding:0;
+‎  box-sizing:border-box;
+‎  font-family:Arial,sans-serif;
+‎}
+‎
+‎body{
+‎  background:#f1f5f9;
+‎  color:#172554;
+‎}
+‎
+‎header{
+‎  background:#064e3b;
+‎  color:white;
+‎  padding:22px;
+‎  text-align:center;
+‎}
+‎
+‎header h1{
+‎  font-size:27px;
+‎}
+‎
+‎header p{
+‎  margin-top:6px;
+‎  color:#bbf7d0;
+‎}
+‎
+‎.container{
+‎  padding:18px;
+‎  max-width:650px;
+‎  margin:auto;
+‎}
+‎
+‎.wallet{
+‎  background:linear-gradient(135deg,#047857,#064e3b);
+‎  color:white;
+‎  padding:25px;
+‎  border-radius:18px;
+‎  margin-bottom:20px;
+‎}
+‎
+‎.wallet h3{
+‎  font-size:15px;
+‎}
+‎
+‎.balance{
+‎  font-size:30px;
+‎  font-weight:bold;
+‎  margin:12px 0;
+‎}
+‎
+‎.grid{
+‎  display:grid;
+‎  grid-template-columns:repeat(2,1fr);
+‎  gap:13px;
+‎  margin:20px 0;
+‎}
+‎
+‎.card{
+‎  background:white;
+‎  padding:20px;
+‎  border-radius:14px;
+‎  text-align:center;
+‎  box-shadow:0 2px 8px #00000010;
+‎}
+‎
+‎.card span{
+‎  font-size:28px;
+‎}
+‎
+‎.card h3{
+‎  margin-top:10px;
+‎  font-size:15px;
+‎}
+‎
+‎.section{
+‎  background:white;
+‎  padding:20px;
+‎  border-radius:15px;
+‎  margin-bottom:18px;
+‎}
+‎
+‎input,select{
+‎  width:100%;
+‎  padding:14px;
+‎  border:1px solid #ddd;
+‎  border-radius:9px;
+‎  margin:10px 0;
+‎  font-size:15px;
+‎}
+‎
+‎button{
+‎  width:100%;
+‎  padding:14px;
+‎  border:none;
+‎  border-radius:9px;
+‎  background:#047857;
+‎  color:white;
+‎  font-size:16px;
+‎  font-weight:bold;
+‎  cursor:pointer;
+‎}
+‎
+‎button:hover{
+‎  background:#065f46;
+‎}
+‎
+‎h2{
+‎  margin-bottom:15px;
+‎  font-size:20px;
+‎}
+‎
+‎.history{
+‎  background:white;
+‎  padding:17px;
+‎  border-radius:14px;
+‎  margin-bottom:20px;
+‎}
+‎
+‎.history p{
+‎  padding:10px 0;
+‎  border-bottom:1px solid #eee;
+‎}
+‎
+‎footer{
+‎  text-align:center;
+‎  padding:20px;
+‎  color:#64748b;
+‎}
+‎</style>
+‎</head>
+‎
+‎<body>
+‎
+‎<header>
+‎  <h1>DEEN DATA</h1>
+‎  <p>Your Trusted Data & Airtime Platform</p>
+‎</header>
+‎
+‎<div class="container">
+‎
+‎<div class="wallet">
+‎  <h3>MY WALLET</h3>
+‎  <div class="balance" id="balance">₦0.00</div>
+‎  <p>Demo wallet balance</p>
+‎</div>
+‎
+‎<div class="grid">
+‎
+‎<div class="card">
+‎<span>📱</span>
+‎<h3>Buy Data</h3>
+‎</div>
+‎
+‎<div class="card">
+‎<span>📞</span>
+‎<h3>Buy Airtime</h3>
+‎</div>
+‎
+‎<div class="card">
+‎<span>💰</span>
+‎<h3>My Wallet</h3>
+‎</div>
+‎
+‎<div class="card">
+‎<span>🎁</span>
+‎<h3>Referral</h3>
+‎</div>
+‎
+‎</div>
+‎
+‎<div class="section">
+‎<h2>📱 Buy Data</h2>
+‎
+‎<select id="network">
+‎<option value="">Select Network</option>
+‎<option>MTN</option>
+‎<option>Airtel</option>
+‎<option>Glo</option>
+‎<option>9mobile</option>
+‎</select>
+‎
+‎<input type="tel" id="phone"
+‎placeholder="Enter Phone Number">
+‎
+‎<select id="plan">
+‎<option value="">Select Data Plan</option>
+‎<option value="500">500MB - ₦500</option>
+‎<option value="1000">1GB - ₦1,000</option>
+‎<option value="2000">2GB - ₦2,000</option>
+‎<option value="3000">3GB - ₦3,000</option>
+‎<option value="5000">5GB - ₦5,000</option>
+‎</select>
+‎
+‎<button onclick="buyData()">Buy Data</button>
+‎</div>
+‎
+‎<div class="section">
+‎<h2>📞 Buy Airtime</h2>
+‎
+‎<select id="airNetwork">
+‎<option value="">Select Network</option>
+‎<option>MTN</option>
+‎<option>Airtel</option>
+‎<option>Glo</option>
+‎<option>9mobile</option>
+‎</select>
+‎
+‎<input type="tel" id="airPhone"
+‎placeholder="Phone Number">
+‎
+‎<input type="number" id="airAmount"
+‎placeholder="Enter Amount">
+‎
+‎<button onclick="buyAirtime()">Buy Airtime</button>
+‎</div>
+‎
+‎<div class="section">
+‎<h2>🎁 Referral Program</h2>
+‎<p>Invite your friends to DEEN DATA.</p>
+‎<input type="text" value="DEENDATA2026"
+‎id="referral" readonly>
+‎<button onclick="copyReferral()">Copy Referral Code</button>
+‎</div>
+‎
+‎<div class="history">
+‎<h2>📋 Transaction History</h2>
+‎<div id="transactions">
+‎<p>No transactions yet.</p>
+‎</div>
+‎</div>
+‎
+‎<div class="section">
+‎<h2>👨‍💼 Admin Information</h2>
+‎<p>Platform: DEEN DATA</p>
+‎<p>Status: Demo Version</p>
+‎<p>Networks: 4</p>
+‎<p>Payment API: Not Connected</p>
+‎</div>
+‎
+‎</div>
+‎
+‎<footer>
+‎<p>© 2026 DEEN DATA. All Rights Reserved.</p>
+‎</footer>
+‎
+‎<script>
+‎
+‎let balance = 0;
+‎
+‎function updateBalance(){
+‎document.getElementById("balance").innerText =
+‎"₦" + balance.toLocaleString("en-NG",{
+‎minimumFractionDigits:2
+‎});
+‎}
+‎
+‎function addTransaction(message){
+‎const box = document.getElementById("transactions");
+‎
+‎if(box.innerHTML.includes("No transactions")){
+‎   box.innerHTML = "";
+‎}
+‎
+‎const p = document.createElement("p");
+‎p.textContent = message;
+‎box.prepend(p);
+‎}
+‎
+‎function buyData(){
+‎
+‎const network =
+‎document.getElementById("network").value;
+‎
+‎const phone =
+‎document.getElementById("phone").value;
+‎
+‎const plan =
+‎document.getElementById("plan").value;
+‎
+‎if(!network || !phone || !plan){
+‎   alert("Please complete all fields");
+‎   return;
+‎}
+‎
+‎if(!/^\d{11}$/.test(phone)){
+‎   alert("Enter a valid 11-digit Nigerian phone number");
+‎   return;
+‎}
+‎
+‎alert("Demo only: Data purchase is not connected to a provider API.");
+‎
+‎}
+‎
+‎function buyAirtime(){
+‎
+‎const network =
+‎document.getElementById("airNetwork").value;
+‎
+‎const phone =
+‎document.getElementById("airPhone").value;
+‎
+‎const amount =
+‎Number(document.getElementById("airAmount").value);
+‎
+‎if(!network || !phone || !amount || amount < 50){
+‎   alert("Please enter valid details. Minimum amount is ₦50.");
+‎   return;
+‎}
+‎
+‎if(!/^\d{11}$/.test(phone)){
+‎   alert("Enter a valid 11-digit phone number");
+‎   return;
+‎}
+‎
+‎alert("Demo only: Airtime purchase is not connected to a provider API.");
+‎
+‎}
+‎
+‎function copyReferral(){
+‎
+‎const code =
+‎document.getElementById("referral");
+‎
+‎code.select();
+‎code.setSelectionRange(0,99999);
+‎
+‎navigator.clipboard.writeText(code.value)
+‎.then(()=>alert("Referral code copied!"))
+‎.catch(()=>alert("Please copy the code manually."));
+‎
+‎}
+‎
+‎updateBalance();
+‎
+‎</script>
+‎
+‎</body>
+‎</html>
+‎
