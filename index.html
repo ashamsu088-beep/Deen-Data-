@@ -3,137 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEEN DATA</title>
+<title>Deen Data - Your Trusted Data & Airtime Platform</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f1f5f9;color:#172554}
-header{background:#064e3b;color:white;padding:22px;text-align:center}
-header h1{font-size:27px}
-header p{margin-top:6px;color:#bbf7d0}
-.container{padding:18px;max-width:650px;margin:auto}
-.wallet{background:linear-gradient(135deg,#047857,#064e3b);color:white;padding:25px;border-radius:18px;margin-bottom:20px}
-.wallet h3{font-size:15px}
-.balance{font-size:30px;font-weight:bold;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:20px 0}
-.card{background:white;padding:20px;border-radius:14px;text-align:center;box-shadow:0 2px 8px #00000010}
-.card span{font-size:28px}
-.card h3{margin-top:10px;font-size:15px}
-.section{background:white;padding:20px;border-radius:15px;margin-bottom:18px}
-input,select{width:100%;padding:14px;border:1px solid #ddd;border-radius:9px;margin:10px 0;font-size:15px}
-button{width:100%;padding:14px;border:none;border-radius:9px;background:#047857;color:white;font-size:16px;font-weight:bold;cursor:pointer}
-button:hover{background:#065f46}
-h2{margin-bottom:15px;font-size:20px}
-.history{background:white;padding:17px;border-radius:14px;margin-bottom:20px}
-.history p{padding:10px 0;border-bottom:1px solid #eee}
-footer{text-align:center;padding:20px;color:#64748b}
-.status{font-size:13px;background:#ecfdf5;color:#065f46;padding:8px;border-radius:8px;margin-top:10px;text-align:center}
+body{background:#f2f2f2}
+.top{background:#00c853;color:white;padding:18px;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.top h1{font-size:24px}
+.top span{font-size:12px;background:white;color:#00c853;padding:5px 10px;border-radius:20px;font-weight:bold}
+.welcome{background:#00e676;color:white;margin:15px;border-radius:12px;padding:18px}
+.wallet{background:white;margin:15px;border-radius:12px;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.wallet b{font-size:20px}
+.wallet button{background:#00c853;color:white;border:none;padding:10px 18px;border-radius:8px;font-weight:bold}
+.services{padding:0 15px}
+.services h3{margin:10px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:white;border-radius:12px;padding:20px;text-align:center}
+.card .icon{width:55px;height:55px;background:#00c853;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 10px}
+.card p{font-size:12px;color:#666}
+.quick{margin:15px;background:#e8f5e9;border:1px solid #00c853;border-radius:12px;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px;border-top:1px solid #ddd}
+.bottom a{text-decoration:none;color:#666;font-size:12px;text-align:center}
+.bottom a.active{color:#00c853;font-weight:bold}
+.section{background:white;margin:15px;border-radius:12px;padding:15px}
+input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
+.btn{width:100%;background:#00c853;color:white;border:none;padding:14px;border-radius:8px;font-weight:bold;font-size:16px;margin-top:5px}
 </style>
 </head>
 <body>
-<header>
-  <h1>DEEN DATA</h1>
-  <p>Your Trusted Data & Airtime Platform</p>
-</header>
-<div class="container">
+
+<div class="top">
+<h1>🛡️ Deen Data</h1>
+<span>📱 09138686057</span>
+</div>
+
+<div class="welcome">
+<b>Welcome back!</b><br>
+Stay connected. Pay bills, buy data & airtime instantly.
+</div>
+
 <div class="wallet">
-  <h3>MY WALLET</h3>
-  <div class="balance" id="balance">₦0.00</div>
-  <p id="walletStatus">Connecting to Supabase...</p>
+<div><small>Wallet Balance</small><br><b>₦5,250.00</b></div>
+<button onclick="fund()">Fund Wallet</button>
 </div>
+
+<div class="services">
+<h3>Our Services</h3>
 <div class="grid">
-<div class="card"><span>📱</span><h3>Buy Data</h3></div>
-<div class="card"><span>📞</span><h3>Buy Airtime</h3></div>
-<div class="card"><span>💰</span><h3>My Wallet</h3></div>
-<div class="card"><span>🎁</span><h3>Referral</h3></div>
+<div class="card" onclick="show('data')"><div class="icon">📶</div><b>Data</b><p>Buy Data Plan</p></div>
+<div class="card" onclick="show('airtime')"><div class="icon">📞</div><b>Airtime</b><p>Buy Airtime</p></div>
+<div class="card" onclick="show('cable')"><div class="icon">📺</div><b>Cable TV</b><p>DSTV / GOTV / Startimes</p></div>
+<div class="card" onclick="show('nepa')"><div class="icon">💡</div><b>NEPA Bill</b><p>Pay Electricity Bill</p></div>
 </div>
-<div class="section">
-<h2>📱 Buy Data</h2>
-<select id="network"><option value="">Select Network</option><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select>
-<input type="tel" id="phone" placeholder="Enter Phone Number">
-<select id="plan"><option value="">Select Data Plan</option><option value="500">500MB - ₦500</option><option value="1000">1GB - ₦1,000</option><option value="2000">2GB - ₦2,000</option><option value="3000">3GB - ₦3,000</option><option value="5000">5GB - ₦5,000</option></select>
-<button onclick="buyData()">Buy Data</button>
-<div class="status" id="dataStatus">Connected to DEEN DATA Database</div>
 </div>
-<div class="section">
-<h2>📞 Buy Airtime</h2>
-<select id="airNetwork"><option value="">Select Network</option><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select>
-<input type="tel" id="airPhone" placeholder="Phone Number">
-<input type="number" id="airAmount" placeholder="Enter Amount">
-<button onclick="buyAirtime()">Buy Airtime</button>
+
+<div class="quick">
+<div><b>📢 Refer & Earn ₦500 for every friend you invite</b></div><b>›</b>
 </div>
+
+<div class="section" id="data">
+<h3>📱 Buy Data</h3>
+<select id="network"><option>Select Network</option><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select>
+<input id="phone" placeholder="Enter Phone Number">
+<select id="plan"><option>Select Data Plan</option><option>MTN 1GB - ₦300</option><option>MTN 2GB - ₦900</option><option>MTN 5GB - ₦2000</option><option>MTN 10GB - ₦5000</option></select>
+<button class="btn" onclick="buy('Data')">Buy Data</button>
+<p style="text-align:center;color:green;margin-top:10px">Connected to DEEN DATA Database</p>
+</div>
+
+<div class="section" id="airtime">
+<h3>📞 Buy Airtime</h3>
+<select><option>Select Network</option><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select>
+<input placeholder="Phone Number">
+<input placeholder="Enter Amount">
+<button class="btn" onclick="buy('Airtime')">Buy Airtime</button>
+</div>
+
 <div class="section">
-<h2>🎁 Referral Program</h2>
+<h3>🎁 Referral Program</h3>
 <p>Invite your friends to DEEN DATA.</p>
-<input type="text" value="DEENDATA2026" id="referral" readonly>
-<button onclick="copyReferral()">Copy Referral Code</button>
+<input value="DEENDATA2026" readonly>
+<button class="btn" onclick="copy()">Copy Referral Code</button>
 </div>
-<div class="history">
-<h2>📋 Transaction History</h2>
-<div id="transactions"><p>Loading...</p></div>
-</div>
+
 <div class="section">
-<h2>👨‍💼 Admin Information</h2>
-<p>Platform: DEEN DATA</p>
-<p>Status: Live - Supabase Connected</p>
-<p>Networks: 4</p>
-<p>Payment API: Supabase + DataHub (Next Step)</p>
+<h3>📋 Transaction History</h3>
+<p>MTN - 1000 - ₦1000 - 09138686057 - pending</p>
 </div>
-</div>
-<footer><p>© 2026 DEEN DATA. All Rights Reserved.</p></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div style="height:80px"></div>
+
+<div class="bottom">
+<a href="#" class="active">🏠<br>Home</a>
+<a href="#">🕒<br>History</a>
+<a href="#">📄<br>Transactions</a>
+<a href="#">👤<br>Profile</a>
+</div>
+
 <script>
-const SUPABASE_URL = "https://ruhggxmaskhyfmvtkmov.supabase.co";
-const SUPABASE_KEY = "sb_publishable_wOz_k_TGKpSDgn0sfLJpmw_3yDMQeNX";
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-async function loadHistory(){
-  const box = document.getElementById("transactions");
-  const { data, error } = await supabaseClient.from('transactions').select('*').order('created_at',{ascending:false}).limit(10);
-  if(error){ box.innerHTML = "<p>History zai bayyana anan. Ka yi Table a Supabase tukuna.</p>"; return; }
-  if(!data || data.length===0){ box.innerHTML = "<p>No transactions yet.</p>"; return; }
-  box.innerHTML = "";
-  data.forEach(t=>{
-    const p = document.createElement("p");
-    p.textContent = `${t.network} - ${t.plan} - ₦${t.amount} - ${t.phone} - ${t.status}`;
-    box.appendChild(p);
-  });
-}
-
-async function buyData(){
-  const network = document.getElementById("network").value;
-  const phone = document.getElementById("phone").value;
-  const plan = document.getElementById("plan").value;
-  if(!network || !phone || !plan){ alert("Please complete all fields"); return; }
-  if(!/^\d{11}$/.test(phone)){ alert("Enter a valid 11-digit Nigerian phone number"); return; }
-  document.getElementById("dataStatus").innerText = "Processing...";
-  const { error } = await supabaseClient.from('transactions').insert([{phone:phone, network:network, plan:plan, amount:Number(plan), status:'pending'}]);
-  if(error){ alert("Error: "+error.message); document.getElementById("dataStatus").innerText = "Error - Check Supabase Table"; return; }
-  alert("An karbi order dinka! Za mu tura Data zuwa " + phone);
-  document.getElementById("dataStatus").innerText = "Order saved! Status: Pending";
-  loadHistory();
-}
-
-async function buyAirtime(){
-  const network = document.getElementById("airNetwork").value;
-  const phone = document.getElementById("airPhone").value;
-  const amount = Number(document.getElementById("airAmount").value);
-  if(!network || !phone || !amount || amount < 50){ alert("Please enter valid details. Minimum amount is ₦50."); return; }
-  if(!/^\d{11}$/.test(phone)){ alert("Enter a valid 11-digit phone number"); return; }
-  const { error } = await supabaseClient.from('transactions').insert([{phone:phone, network:network, plan:'Airtime', amount:amount, status:'pending'}]);
-  if(error){ alert("Error: "+error.message); return; }
-  alert("An karbi Airtime order dinka zuwa " + phone);
-  loadHistory();
-}
-
-function copyReferral(){
-  const code = document.getElementById("referral");
-  code.select(); code.setSelectionRange(0,99999);
-  navigator.clipboard.writeText(code.value).then(()=>alert("Referral code copied!")).catch(()=>alert("Please copy the code manually."));
-}
-
-loadHistory();
-document.getElementById("walletStatus").innerText = "Supabase Connected ✓";
+function fund(){ alert("Tura kudi zuwa Opay: 09138686057 - Deen Data. Sannan ka turo mana screenshot a WhatsApp."); window.open("https://wa.me/2349138686057?text=Ina%20son%20na%20cika%20wallet%20na%20Deen%20Data","_blank"); }
+function buy(t){ alert(t+" order ya shiga! Ka tura kudi zuwa Opay 09138686057, sai mu tura maka "+t); window.open("https://wa.me/2349138686057?text=Ina%20son%20"+t,"_blank"); }
+function show(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+function copy(){ navigator.clipboard.writeText("DEENDATA2026"); alert("An kwafa Referral Code: DEENDATA2026"); }
 </script>
 </body>
-</html>
+  </html>
